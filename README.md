@@ -33,11 +33,14 @@ After this you will receive a message from server ending with: `* Running on htt
 
 Resource | Description
 --------------------------|------------
-`/loadScene/<FileName>` | Load existing scene. Don't forget to add `.ttt` extension to file name e.g. `http://127.0.0.1:5000/loadScene/Room-208.ttt`.
-`/startSim` | Start simulation.
-`/stopSim` | Stop simulation.
-`/pauseSim` | Pause simulation.
-`/ubotForward/<Speed>` | Make UBot move forward with specified speed. E.g. `http://127.0.0.1:5000/ubotForward/0.5`.
+`/start-v-rep-server?ip=<IP Address>&port=<Port>` | Connect to V-REP. Arguments: ip - ip address on which V-REP Remote API Server will be started. Port - on which V-REP Remote API Server will be started. Request method: POST. Example `http://127.0.0.1:5000/start-v-rep-server?ip=127.0.0.1&port=5000`.
+`/start-simulation` | Start V-REP simulation. Request method: POST. Example: `http://127.0.0.1:5000/start-simulation`.
+`/pause-simulation` | Pause V-REP simulation. Request method: POST.
+`/stop-simulation` | Stop V-REP simulation. Request method: POST.
+`/print-message?text=<Text>` | Print message to V-REP console. Request method: POST. Example: `http://127.0.0.1:5000/print-message?Some text message you want to be printed`.
+`/load-scene?file-name=<FileName>` | Load existing scene. Method: POST. Don't forget to add `.ttt` extension to file name e.g. `http://127.0.0.1:5000/load-scene?scene=Simple.ttt`.
+`/add-robot?model-name=<Model name>` | Add robot specified by model file name to the scene. Method: POST. Example: `http://127.0.0.1:5000/add-robot?model=KUKA YouBot.ttm`
+`/forward?<Robot ID>&<Speed>` | Make UBot move forward with specified speed. Method: POST. Example: `http://127.0.0.1:5000/forward?robot-id=0&speed=0.5`.
 `/ubotBackward/<Speed>` | Make UBot move backward with specified speed.
 `/ubotStop` | Make UBot stop.
 `/move/<distance>` | Move UBot on specified distance. E.g. `http://127.0.0.1:5000/move/-1.5`.
