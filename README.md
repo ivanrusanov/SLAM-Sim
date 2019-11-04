@@ -40,12 +40,16 @@ Resource | Description
 `/print-message?text=<Text>` | Print message to V-REP console. Request method: POST. Example: `http://127.0.0.1:5000/print-message?Some text message you want to be printed`.
 `/load-scene?file-name=<FileName>` | Load existing scene. Method: POST. Don't forget to add `.ttt` extension to file name e.g. `http://127.0.0.1:5000/load-scene?scene=Simple.ttt`.
 `/add-robot?model-name=<Model name>` | Add robot specified by model file name to the scene. Method: POST. Example: `http://127.0.0.1:5000/add-robot?model=KUKA YouBot.ttm`
-`/forward?<Robot ID>&<Speed>` | Make UBot move forward with specified speed. Method: POST. Example: `http://127.0.0.1:5000/forward?robot-id=0&speed=0.5`.
-`/ubotBackward/<Speed>` | Make UBot move backward with specified speed.
-`/ubotStop` | Make UBot stop.
-`/move/<distance>` | Move UBot on specified distance. E.g. `http://127.0.0.1:5000/move/-1.5`.
-`/getPosition` | Returns current UBot global coordinates.
-`/getAngle` | Returns current UBot angle about Z axis.
-`/getLidarData` | Returns data from robot's LIDAR.
-`/getRGB` | Returns image captured by built-in RGB camera.
-`/getDepth` | Returns depth data measured using Kinect.
+`/forward?robot-id=<Robot ID>&speed=<Speed>` | Make UBot move forward with specified speed. Method: POST. Example: `http://127.0.0.1:5000/forward?robot-id=0&speed=0.5`.
+`/backward?robot-id=<Robot ID>&speed=<Speed>` | Make UBot move backward with specified speed. Method: POST.
+`/stop?robot-id=<Robot ID>` | Make UBot stop. Method: POST.
+`/replace?robot-id=<Robot ID>&x=<X>&y=<Y>&z=<Z>` | Replace robot to the position specified by coordinates. Method: POST. Example: `http://127.0.0.1:5000/replace?robot-id=0&x=-1&y=0&z=0.1`.
+`/get-image/<Robot ID>` | Get image from RGB camera mounted on a robot. Returns GIF image. Method: GET. Example: `http://127.0.0.1:5000/get-image/0`
+`/get-depth/<Robot ID>` | Get depth data measured by KINECT mounted on a robot. Returns array. Method: GET. Example: `http://127.0.0.1:5000/get-depth/0`
+`/get-sensor-params-list/<int:robot_id>` | Get list of sensors parameters available to change. Method: GET.
+`/get-sensor-params/<robot-id>/<sensor-name>/<parameter-name>` | Get value of sensor parameter by it's name. Posible values of "sensor-name": kinect_rgb, kinect_depth, fastHokuyo_sensor1. Method: GET. Example: `http://127.0.0.1:5000/get-sensor-params/1/kinect_rgb/perspective_angle`.
+`/set-sensor-params?robot-id=1&sensor-name=<Value>&parameter-name=<Value>&parameter-value=<Value>` | Change parameter of sensor. Posible values of "sensor-name": kinect_rgb, kinect_depth, fastHokuyo_sensor1. Method: POST. Example: `http://127.0.0.1:5000/set-sensor-params?robot-id=1&sensor-name=kinect_rgb&parameter-name=perspective_angle&parameter-value=110`
+`/get-standard-deviation/<Robot ID>` | Returns standard deviation - sigma. For more information visit https://en.wikipedia.org/wiki/Standard_deviation.
+`/set-standard-deviation` | Sets standard deviation for robot's movements. Method: POST.
+`/move-distance??robot-id=<Value>&distance=<Value>&speed=<Value>` | Moves robot on specified distance with detrmined speed. Method: POST. Example: `http://127.0.0.1:5000/move-distance?robot-id=0&distance=1.0&speed=1.0`
+`/turn-angle?robot-id=<Value>&angle=<Value>&speed=<Value>` | Turns robot clockwise (angle>0) or counter clockwise (angle<0) on specified angle with detrmined speed. Method: POST.
