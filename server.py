@@ -143,6 +143,13 @@ def get_depth_from_kinect(robotid):
     return answer_json
 
 
+@app.route("/get-lidar/<int:robotid>")
+def get_lidar_data(robotid):
+    answer = env.robots[robotid].get_lidar_data()
+    answer_json = json.dumps(answer)
+    return answer_json
+
+
 @app.route("/set-sensor-params", methods=['POST'])
 def set_sensor_params():
     robot_id = request.args.get('robot-id')
