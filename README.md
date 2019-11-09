@@ -45,7 +45,8 @@ Resource | Description
 `/stop?robot-id=<Robot ID>` | Make UBot stop. Method: POST.
 `/replace?robot-id=<Robot ID>&x=<X>&y=<Y>&z=<Z>` | Replace robot to the position specified by coordinates. Method: POST. Example: `http://127.0.0.1:5000/replace?robot-id=0&x=-1&y=0&z=0.1`.
 `/get-image/<Robot ID>` | Get image from RGB camera mounted on a robot. Returns GIF image. Method: GET. Example: `http://127.0.0.1:5000/get-image/0`
-`/get-depth/<Robot ID>` | Get depth data measured by KINECT mounted on a robot. Returns array. Method: GET. Example: `http://127.0.0.1:5000/get-depth/0`
+`/get-depth/<Robot ID>` | Get depth data measured by KINECT mounted on a robot. Returns array 480x640. Method: GET. Example: `http://127.0.0.1:5000/get-depth/0`
+`/get-lidar/<Robot ID>` | Get data measured by LIDAR mounted on a robot. Returns single dimensional array. Method: GET. Example: `http://127.0.0.1:5000/get-lidar/0`
 `/get-sensor-params-list/<int:robot_id>` | Get list of sensors parameters available to change. Method: GET.
 `/get-sensor-params/<robot-id>/<sensor-name>/<parameter-name>` | Get value of sensor parameter by it's name. Posible values of "sensor-name": kinect_rgb, kinect_depth, fastHokuyo_sensor1. Method: GET. Example: `http://127.0.0.1:5000/get-sensor-params/1/kinect_rgb/perspective_angle`.
 `/set-sensor-params?robot-id=1&sensor-name=<Value>&parameter-name=<Value>&parameter-value=<Value>` | Change parameter of sensor. Posible values of "sensor-name": kinect_rgb, kinect_depth, fastHokuyo_sensor1. Method: POST. Example: `http://127.0.0.1:5000/set-sensor-params?robot-id=1&sensor-name=kinect_rgb&parameter-name=perspective_angle&parameter-value=110`
