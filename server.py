@@ -66,7 +66,7 @@ def stop_simulation():
     env.stop_simulation()
     return 'OK'
 
-
+# TODO Rewrite to JSON format
 @app.route("/print-message", methods=['POST'])
 def print_message():
     text = request.args.get('text')
@@ -118,15 +118,6 @@ def left():
     speed = request.args.get('speed')
     env.robots[int(robot_id)].left(float(speed))
     return 'OK'
-
-
-# @app.route("/move", methods=['POST'])
-# def move():
-#     robot_id = request.args.get('robot-id')
-#     distance = request.args.get('distance')
-#     speed = request.args.get('speed')
-#     env.robots[int(robot_id)].move(float(distance), float(speed))
-#     return 'OK'
 
 
 @app.route("/replace", methods=['POST'])

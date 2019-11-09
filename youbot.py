@@ -40,7 +40,7 @@ class YouBot(object):
 
     def get_position(self):
         position = vrep.simxGetObjectPosition(
-            self.client_id, self.handles['youBot_positionTarget'],
+            self.client_id, self.handles['youBot_positionTarget' + self.postfix],
             -1, BLOCKING_MODE
         )[1]
         return position
