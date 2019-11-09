@@ -52,4 +52,4 @@ Resource | Description
 `/get-standard-deviation/<Robot ID>` | Returns standard deviation - sigma. For more information visit https://en.wikipedia.org/wiki/Standard_deviation.
 `/set-standard-deviation` | Sets standard deviation for robot's movements. Method: POST.
 `/move-distance??robot-id=<Value>&distance=<Value>&speed=<Value>` | Moves robot on specified distance with detrmined speed. Method: POST. Example: `http://127.0.0.1:5000/move-distance?robot-id=0&distance=1.0&speed=1.0`
-`/turn-angle?robot-id=<Value>&angle=<Value>&speed=<Value>` | Turns robot clockwise (angle>0) or counter clockwise (angle<0) on specified angle with detrmined speed. Method: POST.
+`/turn-angle?robot-id=<Value>&angle=<Value>&speed=<Value>` | Turns robot clockwise (speed>0) or counter clockwise (speed<0) on specified angle with detrmined speed. Method: POST.
