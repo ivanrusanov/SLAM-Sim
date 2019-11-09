@@ -123,7 +123,7 @@ class YouBot(object):
 
         res, ret_ints, ret_floats, ret_strings, ret_buffer = vrep.simxCallScriptFunction(
             self.client_id,
-            'youBot_ref',
+            'youBot_ref' + self.postfix,
             vrep.sim_scripttype_childscript,
             'GetRobotAngle', [], [], [], mt_buf,
             BLOCKING_MODE)
@@ -134,7 +134,7 @@ class YouBot(object):
         # вызов скрипта поворота
         vrep.simxCallScriptFunction(
             self.client_id,
-            'youBot_ref',
+            'youBot_ref' + self.postfix,
             vrep.sim_scripttype_childscript,
             'Turn', [],
             [speed], [], mt_buf,
@@ -143,7 +143,7 @@ class YouBot(object):
         while delta <= angle:
             res, ret_ints, ret_floats, ret_strings, ret_buffer = vrep.simxCallScriptFunction(
                 self.client_id,
-                'youBot_ref',
+                'youBot_ref' + self.postfix,
                 vrep.sim_scripttype_childscript,
                 'GetRobotAngle', [], [], [], mt_buf,
                 BLOCKING_MODE)
@@ -154,7 +154,7 @@ class YouBot(object):
 
         vrep.simxCallScriptFunction(
             self.client_id,
-            'youBot_ref',
+            'youBot_ref' + self.postfix,
             vrep.sim_scripttype_childscript,
             'Turn', [], [0.0], [], mt_buf,
             BLOCKING_MODE)
@@ -183,7 +183,7 @@ class YouBot(object):
         return ranges
 
     def get_image_from_kinect(self):
-        res, resolution, image = vrep.simxGetVisionSensorImage(self.client_id, self.handles['kinect_rgb'], 0,
+        res, resolution, image = vrep.simxGetVisionSensorImage(self.client_id, self.handles['kinect_rgb' + self.postfix], 0,
                                                                ONE_SHOT_MODE)
         image_nparray = np.array(image, dtype=np.uint8)
         image_nparray.resize([resolution[1], resolution[0], 3])
