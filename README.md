@@ -33,7 +33,7 @@ After this you will receive a message from server ending with: `* Running on htt
 
 Resource | Description
 --------------------------|------------
-`/start-v-rep-server?ip=<IP Address>&port=<Port>` | Connect to V-REP. Arguments: ip - ip address on which V-REP Remote API Server will be started. Port - on which V-REP Remote API Server will be started. Request method: POST. Example `http://127.0.0.1:5000/start-v-rep-server?ip=127.0.0.1&port=5000`.
+`/start-v-rep-server?ip=<IP Address>&port=<Port>` | Connect to V-REP. Arguments: ip - ip address on which V-REP Remote API Server will be started. Port - on which V-REP Remote API Server will be started. Request method: POST. Example `http://127.0.0.1:5000/start-v-rep-server?ip=127.0.0.1&port=19997`.
 `/start-simulation` | Start V-REP simulation. Request method: POST. Example: `http://127.0.0.1:5000/start-simulation`.
 `/pause-simulation` | Pause V-REP simulation. Request method: POST.
 `/stop-simulation` | Stop V-REP simulation. Request method: POST.
