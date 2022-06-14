@@ -25,7 +25,7 @@ class Environment(object):
         vrep.simxFinish(-1)
         self.client_id = vrep.simxStart(self.ip_address, self.port, True, True, 5000, 5)
         if self.client_id != -1:
-            self.load_scene('Simple.ttt')
+           self.load_scene('Simple.ttt')
 
     def print_message(self, text):
         """Print a message to v-rep console"""

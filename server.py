@@ -103,6 +103,13 @@ def backward():
     env.robots[int(robot_id)].backward(float(speed))
     return 'OK'
 
+@app.route("/stop", methods=['POST'])
+def stop():
+    robot_id = request.args.get('robot-id')
+    speed = 0
+    env.robots[int(robot_id)].backward(float(speed))
+    return 'OK'
+
 
 @app.route("/right", methods=['POST'])
 def right():
@@ -146,6 +153,13 @@ def get_depth_from_kinect(robotid):
 @app.route("/get-lidar/<int:robotid>")
 def get_lidar_data(robotid):
     answer = env.robots[robotid].get_lidar_data()
+    answer_json = json.dumps(answer)
+    return answer_json
+
+
+@app.route("/get_position/<int:robotid>")
+def get_position(robotid):
+    answer = env.robots[robotid].get_position()
     answer_json = json.dumps(answer)
     return answer_json
 

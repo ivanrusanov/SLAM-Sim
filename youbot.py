@@ -59,17 +59,6 @@ class YouBot(object):
 
     def forward(self, speed):
         """Make robot go forward with specified speed"""
-        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_rr' + self.postfix], -speed,
-                                        ONE_SHOT_MODE)
-        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_rl' + self.postfix], -speed,
-                                        ONE_SHOT_MODE)
-        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_fr' + self.postfix], -speed,
-                                        ONE_SHOT_MODE)
-        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_fl' + self.postfix], -speed,
-                                        ONE_SHOT_MODE)
-
-    def backward(self, speed):
-        """Make robot go backward with specified speed"""
         vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_rr' + self.postfix], speed,
                                         ONE_SHOT_MODE)
         vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_rl' + self.postfix], speed,
@@ -77,6 +66,17 @@ class YouBot(object):
         vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_fr' + self.postfix], speed,
                                         ONE_SHOT_MODE)
         vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_fl' + self.postfix], speed,
+                                        ONE_SHOT_MODE)
+
+    def backward(self, speed):
+        """Make robot go backward with specified speed"""
+        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_rr' + self.postfix], -speed,
+                                        ONE_SHOT_MODE)
+        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_rl' + self.postfix], -speed,
+                                        ONE_SHOT_MODE)
+        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_fr' + self.postfix], -speed,
+                                        ONE_SHOT_MODE)
+        vrep.simxSetJointTargetVelocity(self.client_id, self.handles['rollingJoint_fl' + self.postfix], -speed,
                                         ONE_SHOT_MODE)
 
     def right(self, speed):
